@@ -1,9 +1,10 @@
 # algamoney-api
 
-## 1.0 Habilitando o flash para rodar o video
+## 1.1 Introdução ao curso 
+* Habilitando o flash para rodar o video:
 https://docs.google.com/document/d/1JwLx3Shjm7pGqyqbhErSoPkOz67mrlLqgB41hzZPyDs/edit
 
-## SOFEA => Service Oriented Front-End Architecture
+## 1.3 SOFEA => Service Oriented Front-End Architecture
 Remover toda a lógica de apresentação do servidor e levar para o cliente
 
 ### Beneficios
@@ -12,12 +13,12 @@ Remover toda a lógica de apresentação do servidor e levar para o cliente
 * Interoperabilidade
 * Melhor experiência do cliente e baixa latência
 
-## REST
+## 1.4 REST
 Restful -> Implementação da arquitetura REST
 API Rest -> exposição dos serviços Restful
 
-## Testando APIs com Postman
-www.mocky.io
+## 1.7 Testando APIs com Postman
+Simulador de Resposta REST: www.mocky.io
 
 ## 2.3 Modelo de maturidade Richardson
 Nível 0 -> Não é REST -> HTTP só para transporte
