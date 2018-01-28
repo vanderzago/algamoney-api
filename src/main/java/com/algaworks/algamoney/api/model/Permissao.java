@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "permissao")
+@Table(name = "permissao", schema="algamoneyapi")
 public class Permissao {
 
 	@Id

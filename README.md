@@ -50,6 +50,11 @@ Nível 3 -> REST completo
 ## 2.9. Idempotência
 Um método idempotente é executado várias vezes e o resultado por ele produzido é sempre o mesmo
 
+## 3.3. Migração de dados com Flyway
+* Não usar ORM em produção:
+http://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/Hibernate_User_Guide.html#schema-generation
+* Incluir no pom.xml
+* Criar estrutura de diretorios: src/main/resources/db/migration
 
 ## Subindo a aplicação
 java -jar algamoney-api-0.0.1-SNAPSHOT.jar --algamoney.origin.permitida=http://localhost:4200

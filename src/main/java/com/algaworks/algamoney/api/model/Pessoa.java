@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "pessoa")
+@Table(name = "pessoa", schema="algamoneyapi")
 public class Pessoa {
 
 	@Id

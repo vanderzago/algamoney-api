@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "lancamento")
+@Table(name = "lancamento", schema="algamoneyapi")
 public class Lancamento {
 
 	@Id
