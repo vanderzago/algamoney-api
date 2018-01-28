@@ -56,6 +56,31 @@ http://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/Hibernate_User_Gui
 * Incluir no pom.xml
 * Criar estrutura de diretorios: src/main/resources/db/migration
 
+## 3.4. Consultando primeiro recurso com GET
+Estruturando melhor os pacotes java:
+Painel Package Explorer > Seta apontando para baixo (superior direita) > Package Presentation > Hierarchical
+
+## 3.8. Validando atributos desconhecidos
+Jackson
+* biblioteca q converte objetos java em json e vice-versa
+* Incluidos dois parametros no application.properties
+
+## 3.9. Tratando erros com ExceptionHandler
+Criado o arquivo messages.properties
+-> conteudo lido através da implementação messageSource.getMessage(nome_propriedade,parametro passado para a propriedade,lingua nativa da mensagem)
+
+## 3.10. Validando valores inválidos com Bean Validation
+Criado o arquivo ValidationMessages.properties
+-> para descobrir a propriedade que será tratada, basta clicar no nome da anotação e depois CTRL+clique do mouse
+-> vai abrir a implementação da anotação e o valor estará no metodo message:
+String message() default "{javax.validation.constraints.Size.message}"
+-> conteudo lido através da implementação messageSource.getMessage(nome_propriedade,parametro passado para a propriedade,lingua nativa da mensagem)
+-> Em messages.properties foram incluídos os nomes "apresentáveis" para o usuário através das propriedades <classe>.<atributo>
+ 
+## 3.12. Usando eventos para adicionar header Location
+Criado event e listener para tratar algum comportamento comum a um recurso criado, no caso o header location, que contem
+o retorno da URI do recurso que foi criado (http://localhost:8080/categorias/15)
+
 ## Subindo a aplicação
 java -jar algamoney-api-0.0.1-SNAPSHOT.jar --algamoney.origin.permitida=http://localhost:4200
 
