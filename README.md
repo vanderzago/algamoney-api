@@ -81,6 +81,9 @@ String message() default "{javax.validation.constraints.Size.message}"
 Criado event e listener para tratar algum comportamento comum a um recurso criado, no caso o header location, que contem
 o retorno da URI do recurso que foi criado (http://localhost:8080/categorias/15)
 
+## 5.4. Validando inconsistências
+Biblioteca commons.lang3 (maven) possui um metodo que traz a causa raiz de uma exceção: ExceptionUtils.getRootCauseMessage(exception)
+
 ## Subindo a aplicação
 java -jar algamoney-api-0.0.1-SNAPSHOT.jar --algamoney.origin.permitida=http://localhost:4200
 
