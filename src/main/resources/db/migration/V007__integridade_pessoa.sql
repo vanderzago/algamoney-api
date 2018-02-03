@@ -1,0 +1,1 @@
+alter table algamoneyapi.lancamento add constraint FK9pqx360616efx77k3w4j297yw foreign key (codigo_pessoa) references algamoneyapi.pessoa;
