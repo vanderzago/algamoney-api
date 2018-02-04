@@ -14,6 +14,9 @@ CREATE TABLE algamoneyapi.lancamento (
 	FOREIGN KEY (codigo_pessoa) REFERENCES pessoa(codigo)
 ) ;
 
+grant SELECT, INSERT, DELETE, UPDATE on table lancamento to algamoneyapp;
+grant SELECT on sequence lancamento_seq to algamoneyapp;
+
 INSERT INTO algamoneyapi.lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa) values ('Salário mensal', '2017-06-10', null, 6500.00, 'Distribuição de lucros', 'RECEITA', 1, 1);
 INSERT INTO algamoneyapi.lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa) values ('Bahamas', '2017-02-10', '2017-02-10', 100.32, null, 'DESPESA', 2, 2);
 INSERT INTO algamoneyapi.lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa) values ('Top Club', '2017-06-10', null, 120, null, 'RECEITA', 3, 3);

@@ -102,6 +102,34 @@ Biblioteca commons.lang3 (maven) possui um metodo que traz a causa raiz de uma e
 ## 5.9. Implementando a paginação de lançamentos
 Uso da interface Pageable nas classes que implementam o uso de paginação nas consultas rest
 
+## 6.2. Fluxo básico do OAuth
+https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2
+* No pacote config estão as configurações de segurança oAuth e token, como tempo de expiração, usuario e senha do cliente, etc..
+* Recursos oauth implementado pelo Spring Security
+
+## 6.4. JSON Web Tokens - JWT
+https://jwt.io
+Devolve um token mais completo, com trecho JSON onde pode-se passar o usuario e informações referentes a ele e as permissões dele.
+
+## 6.7. Movendo o refresh token para o cookie
+Configuração necessária para que o javascript nao tenha acesso ao refresh token, uma vez q ele nao consegue ler dados do cookies
+Configurado no pacote token
+
+## 6.9. O que é CORS? (Cross Origin HTTP Request)
+https://spring.io/guides/gs/rest-service-cors/
+* Os navegadores nao permitem q codigo javascript façam requisição a um destino diferente da origem
+
+## 6.10. Criando filtro para CORS
+Criado um pacote cors e dentro dele feita uma classe de filtro
+
+## 6.12. Adicionando permissões de acesso
+@PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') => permissao do usuario no banco =< 
+and #oauth2.hasScope('read') => permissao conforme scope do cliente ")
+
+## 6.14. Implementando o logout
+* Implementado na classe TokenResource
+* Spring security nao tem implementação para remover o refresh token
+
 ## Subindo a aplicação
 java -jar algamoney-api-0.0.1-SNAPSHOT.jar --algamoney.origin.permitida=http://localhost:4200
 
