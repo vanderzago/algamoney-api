@@ -130,6 +130,50 @@ and #oauth2.hasScope('read') => permissao conforme scope do cliente ")
 * Implementado na classe TokenResource
 * Spring security nao tem implementação para remover o refresh token
 
+## 7.1. Implementando projeção de lançamento
+* Implementação do parametro resumo de lançamento na url get rest
+* Criada uma classe no pacote projection em lancamento e implementado na classe que implementa o RepositoryQuery 
+
+## 7.2. Profiles do Spring
+* Encontrar TODO nos codigos: Window > Show View > Other > General > Tasks
+* Criada a classe AlgamoneyApiProperty no pacote config > property para definir as propriedades que variam de ambiente para ambiente, por exemplo origem permitida e acesso https da aplicação
+* Criada a classe estatica apenas para agrupar as propriedades
+* Para habilitar a chamada das propriedades externamente (arquivo application.properties por exemplo) é necessário incluir a anotação @EnableConfigurationProperties(AlgamoneyApiProperty.class) na classe AlgamoneyApiApplication
+* Criado o arquivo application-prod.properties para incluir a propriedade algamoney.seguranca.enable-https=true. No ambiente de produção esse arquivo de propriedades será invocado
+
+## 7.3. Criando a conta no Heroku
+Instalar o heroku cli e digitar heroku login informando usuario e senha cadastrados no site do heroku
+
+## 7.4. Deploy da API na nuvem
+* acesse o diretório onde estão os arquivos da aplicação (src/, target/, pom.xml, mvnw e mvnw.cmd)
+* heroku login
+* git init (para que o projeto seja gerenciado pelo git)
+* Confirmar se no .gitignore tem o diretório target/
+* git add .
+* git commit -m "Primeira Versão"
+* criar aplicação no heroku: 
+- heroku create algamoney-api (nome da aplicação precisa ser único e disponível)
+- heroku addons:create <postgres>
+- heroku config:get <postgres_URI>
+* pegar as informações de retorno desse comando e atribuir as variaveis correspondentes no application-prod.properties:
+- heroku config:set JDBC_DATABASE_URL=jdbc:mysql://URL_DO_FINAL_ATE_@ JDBC_DATABASE_USER=URL_DEPOIS_//_ATE_: JDBC_DATABASE_PASS=URL_DEPOIS_:_ATE_@
+- heroku config traz as variaveis configuradas no heroku
+* inserir algamoney.origin-permitida=https://algamoney-ui.herokuapp.com (URL do angular q tb sera deployada no heroku) no arquivo application-prod.properties
+* criar arquivo procfile na raiz do projeto:
+- -Dspring.profiles.active=prod habilita o uso do arquivo application-prod.properties
+- -jar target/algamoney*.jar especifica o arquivo jar da aplicação
+* git add e git commit para toda alteração
+* git push heroku master para enviar para o repositorio master do git remotoa* heroku logs --tail para acompanhar a subida da aplicação
+* Criar um novo access token - duplicando o original e alterando a url do heroku
+
+## 7.5. Nome do usuário no token JWT
+* Criada classe CustomTokenEnhancer no pacote config > token para incluir o nome do usuario no token
+* Essa nova classe é chamada em AuthorizationServerConfig dentro do pacote config
+
+## 7.6. Alternando OAuth 2 e Basic Security com profiles
+* Criada a classe BasicSecurityConfig no pacote config com anotação @Profile("basic-security"). Já a classe AuthorizationServerConfig possui a anotação @Profile("oauth-security")
+* em application.properties foi inserida a propriedade spring.profiles.active=oauth-security informando neste caso q autenticação será oauth
+
 ## Subindo a aplicação
 java -jar algamoney-api-0.0.1-SNAPSHOT.jar --algamoney.origin.permitida=http://localhost:4200
 
