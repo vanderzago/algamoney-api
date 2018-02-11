@@ -159,28 +159,52 @@ Instalar o heroku cli e digitar heroku login informando usuario e senha cadastra
 
 ## 7.4. Deploy da API na nuvemm
 * acesse o diretório onde estão os arquivos da aplicação (src/, target/, pom.xml, mvnw e mvnw.cmd)
-* heroku login
+* heroku loginn
 * git init (para que o projeto seja gerenciado pelo git)
 * Confirmar se no .gitignore tem o diretório target/
 * git add .
 * git commit -m "Primeira Versão"
 * criar aplicação no heroku: 
-- heroku create algamoney-api (nome da aplicação precisa ser único e disponível)
-- heroku addons:create heroku-postgresql:hobby-dev
-- heroku config:get <postgres_URI>
-* pegar as informações de retorno desse comando e atribuir as variaveis correspondentes no application-prod.properties:
-- heroku config:set JDBC_DATABASE_URL=jdbc:mysql://URL_DO_FINAL_ATE_@ JDBC_DATABASE_USER=URL_DEPOIS_//_ATE_: JDBC_DATABASE_PASS=URL_DEPOIS_:_ATE_@
-- heroku config traz as variaveis configuradas no heroku
-* inserir algamoney.origin-permitida=https://algamoney-ui.herokuapp.com (URL do angular q tb sera deployada no heroku) no arquivo application-prod.properties
-* criar arquivo procfile na raiz do projeto:
-- -Dspring.profiles.active=prod habilita o uso do arquivo application-prod.properties
-- -jar target/algamoney*.jar especifica o arquivo jar da aplicação
-* git add e git commit para toda alteração
-* git push heroku master para enviar para o repositorio master do git remoto
-* heroku logs --tail para acompanhar a subida da aplicação
-* Criar um novo access token - duplicando o original e alterando a url do heroku
+- heroku create algamoney-api (nome da aplicação precisa ser único e disponível)heroku create algamoney-api-vz
+Creating ⬢ algamoney-api-vz... done
+https://algamoney-api-vz.herokuapp.com/ | https://git.heroku.com/algamoney-api-vz.git
 
-## 7.5. Nome do usuário no token JWT
+- heroku addons:create heroku-postgresql:hobby-devvCreating heroku-postgresql:hobby-dev on algamoney-api-vz... free
+Database has been created and is available
+ ! This database is empty. If upgrading, you can transfer
+ ! data from another database with pg:copy
+Created postgresql-curved-33244 as DATABASE_URL
+Use heroku addons:docs heroku-postgresql to view documentation
+
+- heroku config:get DATABASE_URL>postgres://livwgjqrwozzfw:60d7fe7310729f2e56fa9c0dfeff2c59193b43b140e861cf1ccbd6217fa011d2@ec2-23-21-162-90.compute-1.amazonaws.com:5432/d80lfhqur7gsv9
+
+* pegar as informações de retorno desse comando e atribuir as variaveis correspondentes no application-prod.properties:
+- heroku config:set JDBC_DATABASE_URL=jdbc:postgres://URL_DO_FINAL_ATE_@ JDBC_DATABASE_USER=URL_DEPOIS_//_ATE_: JDBC_DATABASE_PASS=URL_DEPOIS_:_ATE_@
+
+heroku config:set JDBC_DATABASE_URL=jdbc:postgres://ec2-23-21-162-90.compute-1.amazonaws.com:5432/d80lfhqur7gsv9 JDBC_DATABASE_USER=livwgjqrwozzfw JDBC_DATABASE_PASS=60d7fe7310729f2e56fa9c0dfeff2c59193b43b140e861cf1ccbd6217fa011d2
+
+Setting JDBC_DATABASE_URL, JDBC_DATABASE_USER, JDBC_DATABASE_PASS and restarting ⬢ algamoney-api-vz... done, v4
+JDBC_DATABASE_PASS: 60d7fe7310729f2e56fa9c0dfeff2c59193b43b140e861cf1ccbd6217fa011d2
+JDBC_DATABASE_URL:  jdbc:postgres://ec2-23-21-162-90.compute-1.amazonaws.com:5432/d80lfhqur7gsv9
+JDBC_DATABASE_USER: livwgjqrwozzfw
+
+- heroku config traz as variaveis configuradas no herokuu=== algamoney-api-vz Config Vars
+
+DATABASE_URL:       postgres://livwgjqrwozzfw:60d7fe7310729f2e56fa9c0dfeff2c59193b43b140e861cf1ccbd6217fa011d2@ec2-23-21-162-90.compute-1.amazonaws.com:5432/d80lfhqur7gsv9
+JDBC_DATABASE_PASS: 60d7fe7310729f2e56fa9c0dfeff2c59193b43b140e861cf1ccbd6217fa011d2
+JDBC_DATABASE_URL:  jdbc:postgres://ec2-23-21-162-90.compute-1.amazonaws.com:5432/d80lfhqur7gsv9
+JDBC_DATABASE_USER: livwgjqrwozzfw
+
+* inserir algamoney.origin-permitida=https://algamoney-ui.herokuapp.com (URL do angular q tb sera deployada no heroku) no arquivo application-prod.propertiess
+* criar arquivo procfile na raiz do projeto:
+- -Dspring.profiles.active=prod habilita o uso do arquivo application-prod.propertiess
+- -jar target/algamoney*.jar especifica o arquivo jar da aplicaçãoo
+* git add e git commit para toda alteraçãoo
+* git push heroku master para enviar para o repositorio master do git remotoo
+* heroku logs --tail para acompanhar a subida da aplicaçãoo
+* Criar um novo access token - duplicando o original e alterando a url do herokuu
+
+## 7.5. Nome do usuário no token JWTT
 * Criada classe CustomTokenEnhancer no pacote config > token para incluir o nome do usuario no token
 * Essa nova classe é chamada em AuthorizationServerConfig dentro do pacote config
 
