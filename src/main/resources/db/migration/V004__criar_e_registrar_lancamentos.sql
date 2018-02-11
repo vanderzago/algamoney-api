@@ -1,7 +1,7 @@
 CREATE SEQUENCE algamoneyapi.lancamento_seq;
 
 CREATE TABLE algamoneyapi.lancamento (
-	codigo BIGINT PRIMARY KEY DEFAULT NEXTVAL ('lancamento_seq'),
+	codigo BIGINT PRIMARY KEY DEFAULT NEXTVAL ('algamoneyapi.lancamento_seq'),
 	descricao VARCHAR(50) NOT NULL,
 	data_vencimento DATE NOT NULL,
 	data_pagamento DATE,
@@ -10,12 +10,12 @@ CREATE TABLE algamoneyapi.lancamento (
 	tipo VARCHAR(20) NOT NULL,
 	codigo_categoria BIGINT NOT NULL,
 	codigo_pessoa BIGINT NOT NULL,
-	FOREIGN KEY (codigo_categoria) REFERENCES categoria(codigo),
-	FOREIGN KEY (codigo_pessoa) REFERENCES pessoa(codigo)
+	FOREIGN KEY (codigo_categoria) REFERENCES algamoneyapi.categoria(codigo),
+	FOREIGN KEY (codigo_pessoa) REFERENCES algamoneyapi.pessoa(codigo)
 ) ;
 
-grant SELECT, INSERT, DELETE, UPDATE on table lancamento to algamoneyapp;
-grant SELECT on sequence lancamento_seq to algamoneyapp;
+grant SELECT, INSERT, DELETE, UPDATE on table algamoneyapi.lancamento to algamoneyapp;
+grant USAGE, SELECT on sequence algamoneyapi.lancamento_seq to algamoneyapp;
 
 INSERT INTO algamoneyapi.lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa) values ('Salário mensal', '2017-06-10', null, 6500.00, 'Distribuição de lucros', 'RECEITA', 1, 1);
 INSERT INTO algamoneyapi.lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa) values ('Bahamas', '2017-02-10', '2017-02-10', 100.32, null, 'DESPESA', 2, 2);

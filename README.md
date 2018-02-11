@@ -57,8 +57,19 @@ http://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/Hibernate_User_Gui
 * Criar estrutura de diretorios: src/main/resources/db/migration
 
 ## 3.4. Consultando primeiro recurso com GET
-Estruturando melhor os pacotes java:
-Painel Package Explorer > Seta apontando para baixo (superior direita) > Package Presentation > Hierarchical
+* Estruturando melhor os pacotes java:
+- Painel Package Explorer > Seta apontando para baixo (superior direita) > Package Presentation > Hierarchical
+* Alterando author e commiter:
+- Click Preferences > Team > Git > Configuration
+- Click New Entry and enter the key value pairs:
+
+Key: user.name
+Value: YourUsernameHere
+
+And
+
+Key: user.email
+Value: YourEmailHere
 
 ## 3.8. Validando atributos desconhecidos
 Jackson
@@ -112,8 +123,10 @@ https://jwt.io
 Devolve um token mais completo, com trecho JSON onde pode-se passar o usuario e informações referentes a ele e as permissões dele.
 
 ## 6.7. Movendo o refresh token para o cookie
-Configuração necessária para que o javascript nao tenha acesso ao refresh token, uma vez q ele nao consegue ler dados do cookies
+* Configuração necessária para que o javascript nao tenha acesso ao refresh token, uma vez q ele nao consegue ler dados do cookies
 Configurado no pacote token
+* Primeiro buscar o access token com usuario e senha da aplicação, o cliente (API) e o refresh token estará no cookie
+* as próximas requisições do access token podem ser uma chamada na api com refresh token, buscando ele no cookiee
 
 ## 6.9. O que é CORS? (Cross Origin HTTP Request)
 https://spring.io/guides/gs/rest-service-cors/
@@ -144,7 +157,7 @@ and #oauth2.hasScope('read') => permissao conforme scope do cliente ")
 ## 7.3. Criando a conta no Heroku
 Instalar o heroku cli e digitar heroku login informando usuario e senha cadastrados no site do heroku
 
-## 7.4. Deploy da API na nuvem
+## 7.4. Deploy da API na nuvemm
 * acesse o diretório onde estão os arquivos da aplicação (src/, target/, pom.xml, mvnw e mvnw.cmd)
 * heroku login
 * git init (para que o projeto seja gerenciado pelo git)
@@ -153,7 +166,7 @@ Instalar o heroku cli e digitar heroku login informando usuario e senha cadastra
 * git commit -m "Primeira Versão"
 * criar aplicação no heroku: 
 - heroku create algamoney-api (nome da aplicação precisa ser único e disponível)
-- heroku addons:create <postgres>
+- heroku addons:create heroku-postgresql:hobby-dev
 - heroku config:get <postgres_URI>
 * pegar as informações de retorno desse comando e atribuir as variaveis correspondentes no application-prod.properties:
 - heroku config:set JDBC_DATABASE_URL=jdbc:mysql://URL_DO_FINAL_ATE_@ JDBC_DATABASE_USER=URL_DEPOIS_//_ATE_: JDBC_DATABASE_PASS=URL_DEPOIS_:_ATE_@
@@ -163,7 +176,8 @@ Instalar o heroku cli e digitar heroku login informando usuario e senha cadastra
 - -Dspring.profiles.active=prod habilita o uso do arquivo application-prod.properties
 - -jar target/algamoney*.jar especifica o arquivo jar da aplicação
 * git add e git commit para toda alteração
-* git push heroku master para enviar para o repositorio master do git remotoa* heroku logs --tail para acompanhar a subida da aplicação
+* git push heroku master para enviar para o repositorio master do git remoto
+* heroku logs --tail para acompanhar a subida da aplicação
 * Criar um novo access token - duplicando o original e alterando a url do heroku
 
 ## 7.5. Nome do usuário no token JWT
