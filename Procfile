@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -Dspring.profiles.active=prod $JAVA_OPTS -jar target/algamoney*.jar
+web: java $JAVA_OPTS -Dserver.port=$PORT --spring.config.location=classpath:application-prod.properties -jar target/algamoney*.jar
