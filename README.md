@@ -71,6 +71,9 @@ And
 Key: user.email
 Value: YourEmailHere
 
+* Mostrar numero de linhas e trocar tab por espaço:
+ Window → Preferences → General → Editors → Text Editors → Show line numbers/Insert space in tab
+ 
 ## 3.8. Validando atributos desconhecidos
 Jackson
 * biblioteca q converte objetos java em json e vice-versa
@@ -201,7 +204,7 @@ JDBC_DATABASE_USER: livwgjqrwozzfw
 - -jar target/algamoney*.jar especifica o arquivo jar da aplicaçãoo
 * git add e git commit para toda alteraçãoo
 * git push heroku master para enviar para o repositorio master do git remotoo
-* heroku logs --tail para acompanhar a subida da aplicaçãoo
+* heroku logs --tail para acompanhar a subida da aplicaçãoo* o comando ps serve para que você veja alguns detalhes sobre a sua hospedagem: heroku ps --app aw-gestao-festa
 * Criar um novo access token - duplicando o original e alterando a url do herokuu
 
 ## 7.5. Nome do usuário no token JWTT
