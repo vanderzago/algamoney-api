@@ -73,7 +73,12 @@ Value: YourEmailHere
 
 * Mostrar numero de linhas e trocar tab por espaço:
  Window → Preferences → General → Editors → Text Editors → Show line numbers/Insert space in tab
- 
+
+* Alterando o java de jre para jdk
+On your Eclipse IDE, go into Window > Preferences > Java > Installed JREs > and check your installed JREs. You should have an entry with a JDK there.
+Select the Execution Env as show below. Click OK
+Then Right-Click on your Project -> Maven -> Update Project
+
 ## 3.8. Validando atributos desconhecidos
 Jackson
 * biblioteca q converte objetos java em json e vice-versa
