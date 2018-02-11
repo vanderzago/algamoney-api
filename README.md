@@ -114,7 +114,7 @@ Biblioteca commons.lang3 (maven) possui um metodo que traz a causa raiz de uma e
 * Metamodels são classes que criam atributos estáticos que representam os atributos das classes de entidades de banco de dados, para quando eles forem usados nas criterias de banco de dados, nao haja erro na digitação do nome das colunas.
 * Uso: Lancamento_.descricao
 * Sempre que uma propriedade de uma entidade de banco for alterada, o metamodel faz a adequação nas classes que referenciam aquele metamodel
-* Habilitar Metamodel: Clicar no projeto -> botao direito do mouse -> propriedades -> Java Compiler -> Annotation Processing -> Clicar em Enable project Specific settings -> Generated source directory -> Preencher src/main/java -> Clicar na seta ao lado de Annotation Processing ->Clicar em Factory Path -> Clicar em Enable project Specific settings -> Clicar no botão Add External Java -> Selecionar em home do usuário a estrutura .m2 > repository > org > hibernate > hibernate-jpamodelgen > versão final (5.0.12.Final) > seleciona o jar (Se não encontrar, baixar do repositorio do maven inserindo a dependencia no pom.xml - depois q baixar nao precisa mais dessa dependencia no maven) -> desmarcar a opção org.eclipse.jst.ws.annotations.core -> Clicar no botão OK -> Clicar no botão Yes para fazer rebuild no projeto  
+* Habilitar Metamodel: Clicar no projeto -> botao direito do mouse -> propriedades -> Java Compiler -> Annotation Processing -> Clicar em Enable project Specific settings -> Generated source directory -> Preencher src/main/java -> Clicar na seta ao lado de Annotation Processing ->Clicar em Factory Path -> Clicar em Enable project Specific settings -> Clicar no botão Add External Java -> Selecionar em home do usuário a estrutura .m2 > repository > org > hibernate > hibernate-jpamodelgen > versão final (5.0.12.Final) > seleciona o jar (Se não encontrar, baixar do repositorio do maven inserindo a dependencia no pom.xml - DEPOIS Q BAIXAR DEVE RETIRAR ESSA DEPENDENCIA DO POM.XML) -> desmarcar a opção org.eclipse.jst.ws.annotations.core -> Clicar no botão OK -> Clicar no botão Yes para fazer rebuild no projeto  
 * Criou uma classe de filtro para trabalhar com os filtros na pesquisa de lançamento via rest (descrição, dataVencimentoDe e Ate)
 * Criou uma classe de Query para trabalhar com as consultas no banco que necessitam de implementação de alguns critérios.
 
@@ -210,7 +210,10 @@ JDBC_DATABASE_USER: livwgjqrwozzfw
 * git add e git commit para toda alteraçãoo
 * git push heroku master para enviar para o repositorio master do git remotoo
 * heroku logs --tail para acompanhar a subida da aplicaçãoo* o comando ps serve para que você veja alguns detalhes sobre a sua hospedagem: heroku ps --app aw-gestao-festa
-* Criar um novo access token - duplicando o original e alterando a url do herokuu
+* You can run a command, typically scripts and applications that are part of your app:
+- heroku run bash
+
+* Criar um novo access token - duplicando o original e alterando a url do heroku
 
 ## 7.5. Nome do usuário no token JWTT
 * Criada classe CustomTokenEnhancer no pacote config > token para incluir o nome do usuario no token
