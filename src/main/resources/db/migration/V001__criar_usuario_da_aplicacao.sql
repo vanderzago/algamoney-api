@@ -1,1 +1,1 @@
-create SCHEMA algamoneyapi;
+--create SCHEMA algamoneyapi;
