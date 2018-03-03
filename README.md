@@ -221,7 +221,9 @@ JDBC_DATABASE_USER:livwgjqrwozzfw
 * heroku logs --tail para acompanhar a subida da aplicaçãoo* o comando ps serve para que você veja alguns detalhes sobre a sua hospedagem: heroku ps --app aw-gestao-festa
 * You can run a command, typically scripts and applications that are part of your app:
 - heroku run bash
-
+* Conectar no banco criado
+- heroku pg:psql postgresql-curved-71229 --app algamoney-api-vz
+- SELECT * FROM pg_catalog.pg_tables;
 * Criar um novo access token - duplicando o original e alterando a url do heroku
 
 ## 7.5. Nome do usuário no token JWTT
