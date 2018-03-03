@@ -18,10 +18,6 @@ CREATE TABLE algamoneyapi.usuario_permissao (
 	FOREIGN KEY (codigo_permissao) REFERENCES algamoneyapi.permissao(codigo)
 ) ;
 
-grant SELECT, INSERT, DELETE, UPDATE on table algamoneyapi.usuario to algamoneyapp;
-grant SELECT, INSERT, DELETE, UPDATE on table algamoneyapi.permissao to algamoneyapp;
-grant SELECT, INSERT, DELETE, UPDATE on table algamoneyapi.usuario_permissao to algamoneyapp;
-
 INSERT INTO algamoneyapi.usuario (codigo, nome, email, senha) values (1, 'Administrador', 'admin@algamoney.com', '$2a$10$X607ZPhQ4EgGNaYKt3n4SONjIv9zc.VMWdEuhCuba7oLAL5IvcL5.');
 INSERT INTO algamoneyapi.usuario (codigo, nome, email, senha) values (2, 'Maria Silva', 'maria@algamoney.com', '$2a$10$Zc3w6HyuPOPXamaMhh.PQOXvDnEsadztbfi6/RyZWJDzimE8WQjaq');
 

@@ -5,9 +5,6 @@ CREATE TABLE algamoneyapi.categoria (
 	nome VARCHAR(50) NOT NULL
 ) ;
 
-grant SELECT, INSERT, DELETE, UPDATE on table algamoneyapi.categoria to algamoneyapp;
-grant USAGE, SELECT on sequence algamoneyapi.categoria_seq to algamoneyapp;
-
 INSERT INTO algamoneyapi.categoria (nome) values ('Lazer');
 INSERT INTO algamoneyapi.categoria (nome) values ('Alimentação');
 INSERT INTO algamoneyapi.categoria (nome) values ('Supermercado');

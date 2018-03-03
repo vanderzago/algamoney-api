@@ -13,9 +13,6 @@ CREATE TABLE algamoneyapi.pessoa (
 	estado VARCHAR(2)	
 ) ;
 
-grant SELECT, INSERT, DELETE, UPDATE on table algamoneyapi.pessoa to algamoneyapp;
-grant USAGE, SELECT on sequence algamoneyapi.pessoa_seq to algamoneyapp;
-
 INSERT INTO algamoneyapi.pessoa (nome, ativo, logradouro, numero, complemento, bairro, cep, cidade, estado) values ('Vander',true,'Rua Ronan Riveiro',10,'Ap. 402 bloco 03','Alto Umuarama','38.400-000','Uberlândia','MG');
 INSERT INTO algamoneyapi.pessoa (nome, ativo, logradouro, numero, complemento, bairro, cep, cidade, estado) values ('Renata',true,'Rua Ronan Riveiro',10,'Ap. 402 bloco 03','Alto Umuarama','38.400-000','Uberlândia','MG');
 INSERT INTO algamoneyapi.pessoa (nome, ativo, logradouro, numero, complemento, bairro, cep, cidade, estado) values ('Amanda',true,'Rua Ronan Riveiro',10,'Ap. 402 bloco 03','Alto Umuarama','38.400-000','Uberlândia','MG');
