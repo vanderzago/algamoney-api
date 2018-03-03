@@ -173,30 +173,39 @@ Instalar o heroku cli e digitar heroku login informando usuario e senha cadastra
 * git add .
 * git commit -m "Primeira Versão"
 * criar aplicação no heroku: 
-- heroku create algamoney-api (nome da aplicação precisa ser único e disponível)heroku create algamoney-api-vz
+- heroku create algamoney-api-vz (nome da aplicação precisa ser único e disponível)
+
 Creating ⬢ algamoney-api-vz... done
 https://algamoney-api-vz.herokuapp.com/ | https://git.heroku.com/algamoney-api-vz.git
 
-- heroku addons:create heroku-postgresql:hobby-devvCreating heroku-postgresql:hobby-dev on algamoney-api-vz... free
+- heroku addons:create heroku-postgresql:hobby-dev
+Creating heroku-postgresql:hobby-dev on algamoney-api-vz... free
 Database has been created and is available
  ! This database is empty. If upgrading, you can transfer
  ! data from another database with pg:copy
 Created postgresql-curved-33244 as DATABASE_URL
 Use heroku addons:docs heroku-postgresql to view documentation
 
-- heroku config:get DATABASE_URL>postgres://livwgjqrwozzfw:60d7fe7310729f2e56fa9c0dfeff2c59193b43b140e861cf1ccbd6217fa011d2@ec2-23-21-162-90.compute-1.amazonaws.com:5432/d80lfhqur7gsv9
+- heroku config:get DATABASE_URL
+
+postgres://svlbxqjpmmwxop:30f3e22bc7ead2d4e28b07ada205fcd88b639463715f3a50be978324d23b7d36@ec2-174-129-33-29.compute-1.amazonaws.com:5432/d70t57k7coaiqe
 
 * pegar as informações de retorno desse comando e atribuir as variaveis correspondentes no application-prod.properties:
-- heroku config:set JDBC_DATABASE_URL=jdbc:postgres://URL_DO_FINAL_ATE_@ JDBC_DATABASE_USERNAME=URL_DEPOIS_//_ATE_: JDBC_DATABASE_PASSWORD=URL_DEPOIS_:_ATE_@
+- heroku config:set JDBC_DATABASE_URL=jdbc:postgresql://URL_DO_FINAL_ATE_@ JDBC_DATABASE_USERNAME=URL_DEPOIS_//_ATE_: JDBC_DATABASE_PASSWORD=URL_DEPOIS_:_ATE_@
 
-heroku config:set JDBC_DATABASE_URL=jdbc:postgres://ec2-23-21-162-90.compute-1.amazonaws.com:5432/d80lfhqur7gsv9 JDBC_DATABASE_USERNAME=livwgjqrwozzfw JDBC_DATABASE_PASSWORD=60d7fe7310729f2e56fa9c0dfeff2c59193b43b140e861cf1ccbd6217fa011d2
+heroku config:set JDBC_DATABASE_URL=jdbc:postgresql://ec2-174-129-33-29.compute-1.amazonaws.com:5432/d70t57k7coaiqe JDBC_DATABASE_USERNAME=svlbxqjpmmwxop JDBC_DATABASE_PASSWORD=30f3e22bc7ead2d4e28b07ada205fcd88b639463715f3a50be978324d23b7d36
 
+USERNAME=svlbxqjpmmwxop JDBC_DATABASE_PASSWORD=30f3e22bc7ead2d4e28b07ada205fcd88b639463715f3a50be978324d23b7d36
 Setting JDBC_DATABASE_URL, JDBC_DATABASE_USERNAME, JDBC_DATABASE_PASSWORD and restarting ⬢ algamoney-api-vz... done, v4
-JDBC_DATABASE_PASSWORD: 60d7fe7310729f2e56fa9c0dfeff2c59193b43b140e861cf1ccbd6217fa011d2
-JDBC_DATABASE_URL:  jdbc:postgres://ec2-23-21-162-90.compute-1.amazonaws.com:5432/d80lfhqur7gsv9
-JDBC_DATABASE_USERNAME: livwgjqrwozzfw
+JDBC_DATABASE_PASSWORD: 30f3e22bc7ead2d4e28b07ada205fcd88b639463715f3a50be978324d23b7d36
+JDBC_DATABASE_URL:      jdbc:postgresql://ec2-174-129-33-29.compute-1.amazonaws.com:5432/d70t57k7coaiqe
+JDBC_DATABASE_USERNAME: svlbxqjpmmwxop
 
-- heroku config traz as variaveis configuradas no herokuu=== algamoney-api-vz Config Vars
+
+- heroku config 
+-> traz as variaveis configuradas no heroku
+
+=== algamoney-api-vz Config Vars
 
 DATABASE_URL:       postgres://livwgjqrwozzfw:60d7fe7310729f2e56fa9c0dfeff2c59193b43b140e861cf1ccbd6217fa011d2@ec2-23-21-162-90.compute-1.amazonaws.com:5432/d80lfhqur7gsv9
 JDBC_DATABASE_PASS:60d7fe7310729f2e56fa9c0dfeff2c59193b43b140e861cf1ccbd6217fa011d2
