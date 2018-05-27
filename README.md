@@ -1,5 +1,13 @@
 # algamoney-api
 
+## Instalação do banco docker postgres
+
+docker run --name algamoney-postgres -e POSTGRES_PASSWORD=TR1c0lor -d -p 5432:5432 postgres
+docker ps
+docker exec -it <CONTAINER_ID> bash
+psql -U postgres
+create database algamoneyapi;
+
 ## 1.1 Introdução ao curso 
 * Habilitando o flash para rodar o video:
 https://docs.google.com/document/d/1JwLx3Shjm7pGqyqbhErSoPkOz67mrlLqgB41hzZPyDs/edit
