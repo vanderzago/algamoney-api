@@ -6,7 +6,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -105,32 +104,16 @@ public class AlgamoneyApiApplicationTests {
 	}
 
 	@Test
-	public void deveValidarEstadoValido() {
-		login.logar(ADMIN_USER,ADMIN_PASS);
-		navegaTelaPesquisaPessoas();
-
-		NovaPessoaPageObject novaPessoa = new NovaPessoaPageObject(driver,wait);
-		novaPessoa.validaEstadoValido("SP");
-	}
-	
-	@Test
-	public void deveRetornarMensagemParaInformarEstado_SemEstado() {
-		login.logar(ADMIN_USER,ADMIN_PASS);
-		navegaTelaPesquisaPessoas();
-
-		NovaPessoaPageObject novaPessoa = new NovaPessoaPageObject(driver,wait);
-		novaPessoa.validaMensagemEstadoInvalido("");
-	}
-	
-	@Test
-	public void deveRetornarMensagemParaInformarEstado_EstadoInvalido() {
+	public void deveFazerValidacaoEstado() {
 		login.logar(ADMIN_USER,ADMIN_PASS);
 		navegaTelaPesquisaPessoas();
 
 		NovaPessoaPageObject novaPessoa = new NovaPessoaPageObject(driver,wait);
 		novaPessoa.validaMensagemEstadoInvalido("S1");
+		novaPessoa.validaMensagemEstadoInvalido("");
+		novaPessoa.validaEstadoValido("SP");
 	}
-	
+		
 	@Test
 	public void deveRetornarRestricaoDeAcessoParaEditarLancamento() {
 		login.logar(RESTRICT_USER,RESTRICT_PASS);
