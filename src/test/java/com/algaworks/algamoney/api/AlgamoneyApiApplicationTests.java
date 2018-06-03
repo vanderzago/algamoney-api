@@ -48,10 +48,6 @@ public class AlgamoneyApiApplicationTests {
 		login = new LoginPageObject(driver,wait);
 	}
 	
-	public void logarNaAplicacao(String usuario, String senha) {
-		login.logar(usuario,senha);
-	}
-	
 	public void navegaTelaPesquisaPessoas() {
 		pesquisaPessoas = new PesquisaPessoaPageObject(driver,wait);
 		pesquisaPessoas.navegaTelaPesquisaPessoa();
@@ -66,32 +62,31 @@ public class AlgamoneyApiApplicationTests {
 		pesquisaLancamentos = new PesquisaLancamentoPageObject(driver,wait);
 		pesquisaLancamentos.navegaAcessoNegadoRemocaoLancamento();
 	}
-
+	
 	@Test
 	public void deveOcorrerLogin() {
-		logarNaAplicacao(ADMIN_USER,ADMIN_PASS);
+		login.logar(ADMIN_USER,ADMIN_PASS);
 		assertTrue(login.estaNaTelaLancamentos());
 	}
 	
-	@Test(expected=TimeoutException.class)
+	@Test
 	public void deveFalharLogin() {
-		logarNaAplicacao(ADMIN_USER,"123");
+		login.falhaLogar(ADMIN_USER,"123");
 	}
 
 	@Test
 	public void devePesquisarUmLancamento()
 	{
-		logarNaAplicacao(ADMIN_USER,ADMIN_PASS);
+		login.logar(ADMIN_USER,ADMIN_PASS);
 
 		PesquisaLancamentoPageObject pesquisaLancamento = new PesquisaLancamentoPageObject(driver,wait);
-		pesquisaLancamento.pesquisarLancamento("chante");
-		assertTrue(pesquisaLancamento.encontrouItemPesquisado("Despachante"));
+		pesquisaLancamento.pesquisarLancamento("chante","Despachante");
 	}
 	
 //	@Test
 	public void deveCadastrarUmLancamento()
 	{
-		logarNaAplicacao(ADMIN_USER,ADMIN_PASS);
+		login.logar(ADMIN_USER,ADMIN_PASS);
 
 		NovoLancamentoPageObject novoLancamento = new NovoLancamentoPageObject(driver,wait);
 		novoLancamento.criarNovoLancamento("Taxa venda imovel","31/05/2018","02/06/2018","1500","Lazer","Vander","Teste Selenium");
@@ -101,7 +96,7 @@ public class AlgamoneyApiApplicationTests {
 	@Test
 	public void deveCadastrarUmaPessoa()
 	{
-		logarNaAplicacao(ADMIN_USER,ADMIN_PASS);
+		login.logar(ADMIN_USER,ADMIN_PASS);
 		navegaTelaPesquisaPessoas();
 
 		NovaPessoaPageObject novaPessoa = new NovaPessoaPageObject(driver,wait);
@@ -109,18 +104,18 @@ public class AlgamoneyApiApplicationTests {
 		assertTrue(novaPessoa.cadastradoComSucesso());
 	}
 
-	@Test(expected=TimeoutException.class)
-	public void deveRetornarExcecaoParaEstadoValido() {
-		logarNaAplicacao(ADMIN_USER,ADMIN_PASS);
+	@Test
+	public void deveValidarEstadoValido() {
+		login.logar(ADMIN_USER,ADMIN_PASS);
 		navegaTelaPesquisaPessoas();
 
 		NovaPessoaPageObject novaPessoa = new NovaPessoaPageObject(driver,wait);
-		novaPessoa.validaMensagemEstadoInvalido("SP");
+		novaPessoa.validaEstadoValido("SP");
 	}
 	
 	@Test
 	public void deveRetornarMensagemParaInformarEstado_SemEstado() {
-		logarNaAplicacao(ADMIN_USER,ADMIN_PASS);
+		login.logar(ADMIN_USER,ADMIN_PASS);
 		navegaTelaPesquisaPessoas();
 
 		NovaPessoaPageObject novaPessoa = new NovaPessoaPageObject(driver,wait);
@@ -129,7 +124,7 @@ public class AlgamoneyApiApplicationTests {
 	
 	@Test
 	public void deveRetornarMensagemParaInformarEstado_EstadoInvalido() {
-		logarNaAplicacao(ADMIN_USER,ADMIN_PASS);
+		login.logar(ADMIN_USER,ADMIN_PASS);
 		navegaTelaPesquisaPessoas();
 
 		NovaPessoaPageObject novaPessoa = new NovaPessoaPageObject(driver,wait);
@@ -138,13 +133,13 @@ public class AlgamoneyApiApplicationTests {
 	
 	@Test
 	public void deveRetornarRestricaoDeAcessoParaEditarLancamento() {
-		logarNaAplicacao(RESTRICT_USER,RESTRICT_PASS);
+		login.logar(RESTRICT_USER,RESTRICT_PASS);
 		navegaAcessoNegadoTelaEdicaoLancamento();
 	}
 	
-	@Test(expected=TimeoutException.class)
+	@Test
 	public void deveRetornarRestricaoDeAcessoParaRemoverLancamento() {
-		logarNaAplicacao(RESTRICT_USER,RESTRICT_PASS);
+		login.logar(RESTRICT_USER,RESTRICT_PASS);
 		navegaAcessoNegadoRemocaoLancamento();
 	}
 	

@@ -53,7 +53,7 @@ public class NovaPessoaPageObject {
 		WebElement salvar = driver.findElement(By.name("salvar"));
 		salvar.click();
 		
-		wait.until(ExpectedConditions.titleContains("Edição de pessoa"));
+		wait.until(ExpectedConditions.textToBe(By.xpath("//*[@id=\"toasty\"]/ng2-toast/div/div[2]"),"Pessoa adicionada com sucesso!"));
 		
 	}
 	
@@ -69,6 +69,20 @@ public class NovaPessoaPageObject {
 		actions.build().perform();
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"msg_erro_estado\"]/div"))); 
+	}
+
+	public void validaEstadoValido(String estado) {
+		Actions actions = new Actions(driver);
+    	actions.moveToElement(driver.findElement(By.name("estado")));
+		actions.click();
+		actions.sendKeys(estado);
+		actions.build().perform();
+		
+    	actions.moveToElement(driver.findElement(By.name("cidade")));
+		actions.click();
+		actions.build().perform();
+
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id=\"msg_erro_estado\"]/div"))); 
 	}
 
 	public Boolean cadastradoComSucesso() {	

@@ -24,10 +24,10 @@ public class PesquisaLancamentoPageObject {
 	public void navegaAcessoNegadoRemocaoLancamento() {
 		
 		driver.findElement(By.xpath("//*[@id=\"tabela_lancamentos\"]/p-datatable/div/div[1]/table/tbody/tr[1]/td[6]/span[2]/button")).click();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/app-root/p-confirmdialog/div/div[1]/span")));		
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("/html/body/app-root/p-confirmdialog/div/div[1]/span")));		
 	}
 
-	public void pesquisarLancamento(String itemPesquisa) {
+	public void pesquisarLancamento(String itemPesquisa, String retornoPesquisaDesejado) {
 		
 		WebElement descricaoField = driver.findElement(By.name("descricao"));
 		descricaoField.sendKeys(itemPesquisa);
@@ -35,10 +35,6 @@ public class PesquisaLancamentoPageObject {
 		WebElement pesquisar = driver.findElement(By.name("pesquisar"));
 		pesquisar.click();
 
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("tabela_lancamentos")));
-	}
-	
-	public Boolean encontrouItemPesquisado(String itemPesquisa) {
-		return driver.getPageSource().contains(String.valueOf(itemPesquisa));
+		wait.until(ExpectedConditions.textToBe(By.xpath("//*[@id=\"tabela_lancamentos\"]/p-datatable/div/div[1]/table/tbody/tr/td[2]/span[2]"),retornoPesquisaDesejado));
 	}
 }

@@ -15,10 +15,10 @@ public class LoginPageObject {
 		this.driver = driver;
 		this.wait = wait;
 	}
-	
-	public void logar(String usuario, String senha) {
+
+	public void entraComUsuarioESenha(String usuario, String senha) {
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.name("usuario")));
-		
+
 		WebElement usuarioField = driver.findElement(By.name("usuario"));
 		usuarioField.sendKeys(usuario);
 
@@ -27,6 +27,16 @@ public class LoginPageObject {
 
 		WebElement login = driver.findElement(By.name("login"));
 		login.click();
+	}
+	
+	public void falhaLogar(String usuario, String senha) {
+		entraComUsuarioESenha(usuario,senha);
+		
+		wait.until(ExpectedConditions.textToBe(By.xpath("//*[@id=\"toasty\"]/ng2-toast/div/div[2]"),"Usuário ou senha inválida!"));
+	}
+	
+	public void logar(String usuario, String senha) {
+		entraComUsuarioESenha(usuario,senha);
 		
 		wait.until(ExpectedConditions.titleIs("Pesquisa de lançamentos"));
 	}

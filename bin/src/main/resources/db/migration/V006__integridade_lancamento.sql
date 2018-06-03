@@ -1,0 +1,1 @@
+alter table algamoneyapi.lancamento add constraint FK3oktdfripre9vo4ocu87op55a foreign key (codigo_categoria) references algamoneyapi.categoria;

@@ -56,8 +56,7 @@ public class NovoLancamentoPageObject {
 		WebElement salvar = driver.findElement(By.name("salvar"));
 		salvar.click();
 		
-		wait.until(ExpectedConditions.titleContains("Edição de lançamento"));
-		
+		wait.until(ExpectedConditions.textToBe(By.xpath("//*[@id=\"toasty\"]/ng2-toast/div/div[2]"),"Lançamento cadastrado com sucesso!"));		
 	}
 	
 	public Boolean cadastradoComSucesso() {
