@@ -15,7 +15,7 @@ node {
     stage ('Push APP Docker Image'){
         def dockerHome = tool name: 'Docker', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
         def dockerCMD = "${dockerHome}/bin/docker"
-        withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerhubPasswd')]) {
+        withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubPasswd')]) {
             sh "${dockerCMD} login -u vanderzago -p ${dockerhubPasswd}"
         }
         sh "${dockerCMD} tag vanderz/moneyapi:1.1.0 vanderzago/moneyapi:1.1.0"
@@ -29,7 +29,7 @@ node {
     stage ('Push Postgres Docker Image'){
         def dockerHome = tool name: 'Docker', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
         def dockerCMD = "${dockerHome}/bin/docker"
-        withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerhubPasswd')]) {
+        withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubPasswd')]) {
             sh "${dockerCMD} login -u vanderzago -p ${dockerhubPasswd}"
         }
         sh "${dockerCMD} tag vanderz/moneydb:1.1.0 vanderzago/moneydb:1.1.0"
