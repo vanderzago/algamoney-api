@@ -4,6 +4,6 @@ LABEL Author="Vander Zago"
 
 VOLUME  ["/etc/postgresql", "/var/log/postgresql", "/var/lib/postgresql"]
 
-COPY "sql/init.sql" "/docker-entrypoint-initdb.d"
+COPY "docker/sql/init.sql" "/docker-entrypoint-initdb.d"
 
 EXPOSE 5432
