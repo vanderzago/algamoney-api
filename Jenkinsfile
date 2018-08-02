@@ -9,12 +9,12 @@ node {
     }
     stage ('Build APP Docker Image'){
         def dockerHome = tool name: 'Docker', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
-        def dockerCMD = "${dockerHome}/bin/docker"
+        def dockerCMD = "sudo ${dockerHome}/bin/docker"
         sh "${dockerCMD} build -t vanderz/moneyapi:1.1.0 ."
     }
     stage ('Push APP Docker Image'){
         def dockerHome = tool name: 'Docker', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
-        def dockerCMD = "${dockerHome}/bin/docker"
+        def dockerCMD = "sudo ${dockerHome}/bin/docker"
         withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubPasswd')]) {
             sh "${dockerCMD} login -u vanderzago -p ${dockerhubPasswd}"
         }
@@ -23,12 +23,12 @@ node {
     }
     stage ('Build Postgres Docker Image'){
         def dockerHome = tool name: 'Docker', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
-        def dockerCMD = "${dockerHome}/bin/docker"
+        def dockerCMD = "sudo ${dockerHome}/bin/docker"
         sh "${dockerCMD} build -t vanderz/moneydb:1.1.0 postgres.dockerfile"
     }
     stage ('Push Postgres Docker Image'){
         def dockerHome = tool name: 'Docker', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
-        def dockerCMD = "${dockerHome}/bin/docker"
+        def dockerCMD = "sudo ${dockerHome}/bin/docker"
         withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubPasswd')]) {
             sh "${dockerCMD} login -u vanderzago -p ${dockerhubPasswd}"
         }
