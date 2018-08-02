@@ -24,7 +24,7 @@ node {
     stage ('Build Postgres Docker Image'){
         def dockerHome = tool name: 'Docker', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
         def dockerCMD = "sudo ${dockerHome}/bin/docker"
-        sh "${dockerCMD} build -f docker/postgres.dockerfile -t vanderz/moneydb:1.1.0 ."
+        sh "${dockerCMD} build -f docker/postgres.dockerfile -t vanderz/moneydb:1.2.0 ."
     }
     stage ('Push Postgres Docker Image'){
         def dockerHome = tool name: 'Docker', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
@@ -32,7 +32,7 @@ node {
         withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubPasswd')]) {
             sh "${dockerCMD} login -u vanderzago -p ${dockerhubPasswd}"
         }
-        sh "${dockerCMD} tag vanderz/moneydb:1.1.0 vanderzago/moneydb:1.1.0"
-        sh "${dockerCMD} push vanderzago/moneydb:1.1.0"
+        sh "${dockerCMD} tag vanderz/moneydb:1.2.0 vanderzago/moneydb:1.2.0"
+        sh "${dockerCMD} push vanderzago/moneydb:1.2.0"
     }
 }
