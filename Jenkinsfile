@@ -10,7 +10,7 @@ node {
     stage ('Build APP Docker Image'){
         def dockerHome = tool name: 'Docker', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
         def dockerCMD = "sudo ${dockerHome}/bin/docker"
-        sh "${dockerCMD} build -f api.dockerfile -t vanderz/moneyapi:1.1.0 ."
+        sh "${dockerCMD} build -f docker/api.dockerfile -t vanderz/moneyapi:1.1.0 ."
     }
     stage ('Push APP Docker Image'){
         def dockerHome = tool name: 'Docker', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
@@ -24,7 +24,7 @@ node {
     stage ('Build Postgres Docker Image'){
         def dockerHome = tool name: 'Docker', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
         def dockerCMD = "sudo ${dockerHome}/bin/docker"
-        sh "${dockerCMD} build -f postgres.dockerfile -t vanderz/moneydb:1.1.0 ."
+        sh "${dockerCMD} build -f docker/postgres.dockerfile -t vanderz/moneydb:1.1.0 ."
     }
     stage ('Push Postgres Docker Image'){
         def dockerHome = tool name: 'Docker', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
