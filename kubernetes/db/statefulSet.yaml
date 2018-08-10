@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: statefulset-postgres
+spec:
+  serviceName: postgresdb
+  template:
+    metadata:
+      labels:
+        name: postgres
+    spec:
+      containers:
+        - name: container-postgres
+          image: vanderzago/moneydb:1.2.0
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: volume-postgres
+              mountPath: /var/lib/postgresql
+      volumes:
+        - name: volume-postgres
+          persistentVolumeClaim:
+            claimName: configuracao-postgres
