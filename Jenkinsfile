@@ -42,12 +42,12 @@ node {
         sh "${GCSCMD} container clusters get-credentials algamoneyapi --zone southamerica-east1-a --project totemic-effect-212520"
     }
     stage ('Deploy Database on Kubernetes cluster'){
-        sh 'kubectl apply -f db/permissoes.yaml'
-        sh 'kubectl apply -f db/servico-banco.yaml'
-        sh 'kubectl apply -f db/statefulSet.yaml'
+        sh 'kubectl apply -f kubernetes/db/permissoes.yaml'
+        sh 'kubectl apply -f kubernetes/db/servico-banco.yaml'
+        sh 'kubectl apply -f kubernetes/db/statefulSet.yaml'
     }
     stage ('Deploy Application on Kubernetes cluster'){
-        sh 'kubectl apply -f app/deployment.yaml'
-        sh 'kubectl apply -f app/servico-aplicacao.yaml'
+        sh 'kubectl apply -f kubernetes/app/deployment.yaml'
+        sh 'kubectl apply -f kubernetes/app/servico-aplicacao.yaml'
     }
 }
