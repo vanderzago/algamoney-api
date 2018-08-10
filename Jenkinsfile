@@ -35,4 +35,16 @@ node {
         sh "${dockerCMD} tag vanderz/moneydb:1.2.0 vanderzago/moneydb:1.2.0"
         sh "${dockerCMD} push vanderzago/moneydb:1.2.0"
     }
+    stage ('Connect Kubernetes Engine'){
+        def GCSHome = tool name: 'Google Cloud SDK', type: 'com.cloudbees.jenkins.plugins.gcloudsdk.GCloudInstallation'
+        def GCSCMD = "${GCSHome}/bin/gcloud"
+        sh "${GCSCMD} auth activate-service-account 411677944816-compute@developer.gserviceaccount.com --key-file /usr/share/jenkins/ref/totemic-effect-212520-dd35111cff86.json --project totemic-effect-212520"
+        sh "${GCSCMD} container clusters get-credentials algamoneyapi --zone southamerica-east1-a --project totemic-effect-212520"
+    }
+    stage ('Deploy Database on Kubernetes cluster'){
+        sh 'kubectl apply -f db/permissoes.yaml db/servico-banco.yaml db/statefulSet.yaml'
+    }
+    stage ('Deploy Application on Kubernetes cluster'){
+        sh 'kubectl apply -f app/deployment.yaml app/servico-aplicacao.yaml'
+    }
 }
