@@ -1,5 +1,15 @@
 # algamoney-api
 
+## Preparação ambiente
+* Instalar Java JDK 8
+* Instalar STS 4
+* Instalar docker postgres (ver readme repositorio algamoney-db)
+* Se código já pronto, buscar do git e importar projeto no STS
+* Verificar o diretorio target no pom.xml (deve ser o mesmo onde o docker vai buscar o jar)
+* Depois de importado, botão direito > Maven > Update Project
+* Para compliar, botão direito no projeto > Run As > Maven Build... > Informar clean install -PotherOutputDir -Dspring.profiles.active=local no campo Goals
+* Subir ambiente algamoney (ver readme repositorio algamoney-compose)
+
 ## 1.1 Introdução ao curso 
 * Habilitando o flash para rodar o video:
 https://docs.google.com/document/d/1JwLx3Shjm7pGqyqbhErSoPkOz67mrlLqgB41hzZPyDs/edit
@@ -58,9 +68,9 @@ http://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/Hibernate_User_Gui
 
 ## 3.4. Consultando primeiro recurso com GET
 * Estruturando melhor os pacotes java:
-- Painel Package Explorer > Seta apontando para baixo (superior direita) > Package Presentation > Hierarchical
+- Painel Package Explorer > ícone tres pontos (superior direita) > Package Presentation > Hierarchical
 * Alterando author e commiter:
-- Click Preferences > Team > Git > Configuration
+- Click Window > Preferences > Team > Git > Configuration
 - Click New Entry and enter the key value pairs:
 
 Key: user.name
