@@ -3,12 +3,15 @@
 ## Preparação ambiente
 * Instalar Java JDK 8
 * Instalar STS 4
-* Instalar docker postgres (ver readme repositorio algamoney-db)
+* Instalar docker (repositorios algamoney-db, algamoney-api-server e algamoney-compose)
+  * Criar diretorio algamoney-docker e fazer o git clone de cada um desses repositorios neste diretorio
 * Se código já pronto, buscar do git e importar projeto no STS
 * Verificar o diretorio target no pom.xml (deve ser o mesmo onde o docker vai buscar o jar)
 * Depois de importado, botão direito > Maven > Update Project
-* Para compliar, botão direito no projeto > Run As > Maven Build... > Informar clean install -PotherOutputDir -Dspring.profiles.active=local no campo Goals
-* Subir ambiente algamoney (ver readme repositorio algamoney-compose)
+* Subir apenas o container do banco (ver readme do repositorio) para a compilação do artefato
+* Para compliar, botão direito no projeto > Run As > Maven Build... > Informar clean install -PotherOutputDir no campo Goals
+  * Parametro -PotherOutputDir faz a compilacao ocorrer no diretorio especificado neste profile no pom.xml
+* Parar o container do banco e Subir ambiente algamoney (ver readme repositorio algamoney-compose)
 
 ## 1.1 Introdução ao curso 
 * Habilitando o flash para rodar o video:

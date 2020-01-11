@@ -105,29 +105,10 @@
 	</build>
 	<profiles>
 	    <profile>
-        <id>local</id>
-        <activation>
-            <property>
-                <name>spring.profiles.active</name>
-                <value>local</value>
-            </property>
-        </activation>
-    </profile>
-    <profile>
-        <id>docker</id>
-        <activation>
-            <property>
-                <name>spring.profiles.active</name>
-                <value>docker</value>
-            </property>
-        </activation>           
-    </profile>
-	    <profile>
 	        <id>otherOutputDir</id>
 	        <build>
 	            <directory>C:\opscode\git\personal\algamoney-docker\algamoney-api-server\build</directory>
 	        </build>
 	    </profile>
 	</profiles>
-
 </project>
