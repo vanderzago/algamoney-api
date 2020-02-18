@@ -252,3 +252,8 @@ java -jar algamoney-api-0.0.1-SNAPSHOT.jar --algamoney.origin.permitida=http://l
 
 ## Subindo a aplicação com oauth
 java -jar algamoney-api-0.0.1-SNAPSHOT.jar --algamoney.origin-permitida=http://localhost:4200 --spring.profiles.active=oauth-security
+
+## 22.1
+
+* Alterar versão do spring boot
+* Alterar datas dos lançamentos para gerar graficos melhor apresentaveis
