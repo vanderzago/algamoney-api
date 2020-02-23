@@ -13,6 +13,12 @@
   * Parametro -PotherOutputDir faz a compilacao ocorrer no diretorio especificado neste profile no pom.xml
 * Parar o container do banco e Subir ambiente algamoney (ver readme repositorio algamoney-compose)
 
+## Atalhos Eclipse
+
+* CTRL + SHIFT + O = importar as classes
+* ALT + SHIFT + S = menu para criar getters and setters, construtores, etc
+* CTRL + SHIFT + R = abrir uma classe java
+
 ## 1.1 Introdução ao curso 
 * Habilitando o flash para rodar o video:
 https://docs.google.com/document/d/1JwLx3Shjm7pGqyqbhErSoPkOz67mrlLqgB41hzZPyDs/edit
@@ -253,7 +259,63 @@ java -jar algamoney-api-0.0.1-SNAPSHOT.jar --algamoney.origin.permitida=http://l
 ## Subindo a aplicação com oauth
 java -jar algamoney-api-0.0.1-SNAPSHOT.jar --algamoney.origin-permitida=http://localhost:4200 --spring.profiles.active=oauth-security
 
-## 22.1
+## 22.1. Preparação do retorno dos dados para os gráficos
 
 * Alterar versão do spring boot
-* Alterar datas dos lançamentos para gerar graficos melhor apresentaveis
+* Alterar datas dos lançamentos para gerar graficos baseados na data corrente
+
+## 22.6. Instalando o Jasper Studio
+
+* Download versão 6.5.1
+
+## 22.7. Ajustando o layout do relatório
+
+* Project Explorer > Myreports > Botão direito > New > Jasper Report > Blank A4 > Definir nome .jrxml > One Empty Record - Empty Rows > Finish
+* Criar title, page header, detail, page footer
+
+## 22.9. Criando os campos e parâmetros do relatório
+
+* Adicionar o jar.original do projeto para reconher as classes Tipo e Pessoa no Jasper
+   * MyReports > botão direito > Build Path > Configuring Build Path > Java Build Path > Libraries > Add External Jars
+   
+## 22.13. Gerando os bytes do relatório
+
+* Criar a pasta docs/relatorios na raiz do projeto
+   * Copiar o arquivo jrxml do relatorio criado no Jasper
+* Criar a pasta src/main/resources/relatorios
+   * Compilar o relatorio no Jasper e copiar o arquivo compildo .jasper para este diretório
+* Importar no pom as dependencias do jasper, propriedades e repositorio
+
+## 22.14. Retornando os bytes do relatorio na requisição
+
+* Ao criar a collection no postman, clicar no botao Send and Download para baixar o relatório
+
+## 22.16. Configurando o envio de e-mail
+
+* Inserir dependencia do email no pom
+
+## 22.18. Configurando template para envio do e-mail
+
+* Thymeleaf para construção do html do email
+* htmls em src/main/resources/templates/mail
+
+## 22.19. Processando o template e enviando o e-mail
+
+* Inserir dependencia e propriedades do Thymeleaf no pom
+* Informar as configurações do gmail no MailConf e application.properties
+* Informar agendamento do envio de email em LancamentoService.java
+   *  @Scheduled(cron = "0 0 6 * * *")
+   *  @Scheduled(fixedDelay = 1000 * 60 * 5)
+   
+## 22.23. Criando a entidade Contato para suportar mestre-detalhe
+
+* Gerar novamente os meta-models (gerando _.java)
+   * Remover os metamodels atuais
+   * Botão direito no projeto > properties > java compiler > annotation processing (corrigir diretorio em Generated source directory para src/main/java, se for o caso) > Factory path > (desmarcar o item Enable Project specific settings , apply, marcar e apply novamente)
+
+ ## 22.24. Resolvendo o StackOverflowError com @JsonIgnoreProperties
+ * Anotação @JsonIgnoreProperties inserida para não ler a propriedade pessoa em contato, evitando loop infinito e erro stackoverflow no log e unexpected '' no postman
+ 
+ ## 22.26. Usando a propriedade orphanRemoval
+ 
+ * orphanRemoval -> Hibernate vai remover tudo q estiver na base e que não estiver mais na lista de contatos em pessoas 
