@@ -11,6 +11,8 @@ public class AlgamoneyApiProperty {
 
 	private final Mail mail = new Mail();
 
+	private final Local local = new Local();
+	
 	public Seguranca getSeguranca() {
 		return seguranca;
 	}
@@ -25,6 +27,10 @@ public class AlgamoneyApiProperty {
 
 	public Mail getMail() {
 		return mail;
+	}
+	
+	public Local getLocal() {
+		return local;
 	}
 	
 	public static class Seguranca {
@@ -81,6 +87,20 @@ public class AlgamoneyApiProperty {
 
 		public void setPassword(String password) {
 			this.password = password;
+		}
+	}
+	
+	public static class Local {
+		
+		private String path;
+		
+		
+		public String getPath() {
+			return path;
+		}
+		
+		public void setPath(String path) {
+			this.path = path;
 		}
 	}
 }

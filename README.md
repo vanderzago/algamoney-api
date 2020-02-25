@@ -319,3 +319,7 @@ java -jar algamoney-api-0.0.1-SNAPSHOT.jar --algamoney.origin-permitida=http://l
  ## 22.26. Usando a propriedade orphanRemoval
  
  * orphanRemoval -> Hibernate vai remover tudo q estiver na base e que não estiver mais na lista de contatos em pessoas 
+ 
+ ## 22.36. Configurando URL do anexo
+ * Trazer a url no corpo da requisição através de um listener
+   * Sempre que houver um anexo na tabela de lancamento, trará a url do anexo via listener do hibernate

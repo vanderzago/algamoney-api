@@ -14,6 +14,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.algaworks.algamoney.api.dto.LancamentoEstatisticaPessoa;
 import com.algaworks.algamoney.api.mail.Mailer;
@@ -24,6 +25,7 @@ import com.algaworks.algamoney.api.repository.LancamentoRepository;
 import com.algaworks.algamoney.api.repository.PessoaRepository;
 import com.algaworks.algamoney.api.repository.UsuarioRepository;
 import com.algaworks.algamoney.api.service.exception.PessoaInexistenteOuInativaException;
+import com.algaworks.algamoney.api.storage.Local;
 
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -48,6 +50,9 @@ public class LancamentoService {
 	
 	@Autowired
 	private Mailer mailer;
+	
+	@Autowired
+	private Local local;
 	
 	@Scheduled(cron = "0 0 6 * * *")
 	public void avisarSobreLancamentosVencidos() {
@@ -111,6 +116,14 @@ public class LancamentoService {
 			validarPessoa(lancamento);
 		}
 
+		if (StringUtils.isEmpty(lancamento.getAnexo())
+				&& StringUtils.hasText(lancamentoSalvo.getAnexo())) {
+			local.remover(lancamentoSalvo.getAnexo());
+		} else if (StringUtils.hasText(lancamento.getAnexo())
+				&& !lancamento.getAnexo().equals(lancamentoSalvo.getAnexo())) {
+			local.remover(lancamentoSalvo.getAnexo());
+		}
+		
 		BeanUtils.copyProperties(lancamento, lancamentoSalvo, "codigo");
 
 		return lancamentoRepository.save(lancamentoSalvo);
