@@ -19,6 +19,13 @@
 * ALT + SHIFT + S = menu para criar getters and setters, construtores, etc
 * CTRL + SHIFT + R = abrir uma classe java
 
+## Debug remoto
+
+* Marcar o breakpoint
+* Clicar seta ao lado do icone de debug > Debug Configurations > Remote Java Application > New
+   * Nome do debug
+   * Host
+   * Porta
 ## 1.1 Introdução ao curso 
 * Habilitando o flash para rodar o video:
 https://docs.google.com/document/d/1JwLx3Shjm7pGqyqbhErSoPkOz67mrlLqgB41hzZPyDs/edit
