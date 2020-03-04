@@ -5,8 +5,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,7 +16,7 @@ import com.algaworks.algamoney.api.config.property.AlgamoneyApiProperty;
 @Component
 public class Local {
 
-	private static final Logger logger = LoggerFactory.getLogger(Local.class);
+	private static Logger logger = LogManager.getLogger(Local.class);
 	
 	@Autowired
 	private AlgamoneyApiProperty property;
@@ -48,7 +48,7 @@ public class Local {
 							objeto);
 				}  
 			}  
-		}  
+		}
 		catch(Exception e)  
 		{  
 			if (logger.isDebugEnabled()) {

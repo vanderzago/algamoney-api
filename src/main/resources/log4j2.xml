@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="60">
+    <Properties>
+        <Property name="logstash.host">udp:graylog</Property>
+        <Property name="logstash.port">12201</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console-Appender" target="SYSTEM_OUT">
+            <PatternLayout>
+                <pattern>
+                    [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
+                </pattern>
+            </PatternLayout>
+        </Console>
+        <Gelf name="Gelf" host="${logstash.host}" port="${logstash.port}" version="1.1"
+              extractStackTrace="true" filterStackTrace="false" originHost="%host{fqdn}">
+            <Field name="timestamp" pattern="%d{dd MMM yyyy HH:mm:ss,SSS}"/>
+            <Field name="level" pattern="%level"/>
+            <Field name="simpleClassName" pattern="%C{1}"/>
+            <Field name="className" pattern="%C"/>
+            <Field name="server" pattern="%host"/>
+            <Field name="application" pattern="logging"/>
+            <Field name="tag" pattern="log"/>
+        </Gelf>
+    </Appenders>
+    <Loggers>
+        <Logger name="org.springframework.web" level="info" additivity="false">
+            <AppenderRef ref="SpringBoot-Appender"/>
+            <AppenderRef ref="Console-Appender"/>
+        </Logger>
+        <Logger name="com.example.logging" level="info" additivity="false">
+            <AppenderRef ref="App-Appender"/>
+            <AppenderRef ref="Console-Appender"/>
+            <AppenderRef ref="Gelf"/>
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="Console-Appender"/>
+            <AppenderRef ref="Gelf"/>
+        </Root>
+    </Loggers>
+</Configuration>
