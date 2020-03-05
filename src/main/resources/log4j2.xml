@@ -24,11 +24,7 @@
         </Gelf>
     </Appenders>
     <Loggers>
-        <Logger name="org.springframework.web" level="info" additivity="false">
-            <AppenderRef ref="SpringBoot-Appender"/>
-            <AppenderRef ref="Console-Appender"/>
-        </Logger>
-        <Logger name="com.example.logging" level="info" additivity="false">
+        <Logger name="com.algaworks.algamoney.api" level="info" additivity="false">
             <AppenderRef ref="App-Appender"/>
             <AppenderRef ref="Console-Appender"/>
             <AppenderRef ref="Gelf"/>
