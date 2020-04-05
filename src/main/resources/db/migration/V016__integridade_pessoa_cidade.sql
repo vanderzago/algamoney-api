@@ -1,0 +1,1 @@
+alter table algamoneyapi.pessoa add constraint FK5kw2bqykvdrlxsudppb1h7v3c foreign key (codigo_cidade) references algamoneyapi.cidade

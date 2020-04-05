@@ -1,6 +1,8 @@
 package com.algaworks.algamoney.api.model;
 
 import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
 
 @Embeddable
@@ -20,12 +22,10 @@ public class Endereco {
 	@Size(min=1, max=10)
 	private String cep;
 	
-	@Size(min=1, max=100)
-	private String cidade;
+	@ManyToOne
+	@JoinColumn(name = "codigo_cidade")
+	private Cidade cidade;
 	
-	@Size(min=2, max=2)
-	private String estado;
-
 	public String getLogradouro() {
 		return logradouro;
 	}
@@ -66,19 +66,11 @@ public class Endereco {
 		this.cep = cep;
 	}
 
-	public String getCidade() {
+	public Cidade getCidade() {
 		return cidade;
 	}
-
-	public void setCidade(String cidade) {
+	
+	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
-	}
-
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
 	}
 }

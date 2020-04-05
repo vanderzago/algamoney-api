@@ -24,11 +24,7 @@
         </Gelf>
     </Appenders>
     <Loggers>
-        <Logger name="com.algaworks.algamoney.api" level="info" additivity="false">
-            <AppenderRef ref="App-Appender"/>
-            <AppenderRef ref="Console-Appender"/>
-            <AppenderRef ref="Gelf"/>
-        </Logger>
+        <Logger name="org.hibernate" level="debug" />
         <Root level="info">
             <AppenderRef ref="Console-Appender"/>
             <AppenderRef ref="Gelf"/>
